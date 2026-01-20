@@ -1,0 +1,12 @@
+{
+   "presets": [
+      [
+         "@babel/preset-env",
+         {
+            "targets": "last 2 Chrome versions, last 2 Firefox versions, last 2 Edge versions, iOS >= 10, safari >= 10"
+         }
+      ],
+      "@babel/preset-typescript"
+   ],
+   "plugins": ["@babel/plugin-transform-runtime"]
+}
