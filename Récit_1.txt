@@ -1,0 +1,94 @@
+Récit 1 : En tant qu'employé, j'aimerais pourvoir suivre l'état d'avancement de mes demandes d'absence afin de mieux planifier mon emploi du temps.
+L'employé dispose d'une page dédiée au suivi de ses propres demandes d'absence. Il est important de noter que :
+ - L'employé n'a accès qu'à ses propres demandes.
+ - Il ne peut consulter ni modifier les demandes d'absence d'autres employés.
+Cette interface est organisée en trois sections :
+Section 1 : Initiation d'une nouvelle demande d'absence.
+Cette section est simple et contient le bouton "Nouvelle demande...". Lorsqu'un employé clique sur ce bouton, une fenêtre popup s'ouvre affichant le "Formulaire de demande d'absence", lui permettant ainsi d'initier une nouvelle demande. Les étapes détaillées de création et de soumission d'une demande seront présentées dans le récit 2. Tout utilisateur est autorisé à initier une demande d'absence, que ce soit pour lui-même ou au nom d'un autre employé. Dans ce contexte, il est désigné comme l'initiateur de la demande.
+
+Section 2 : Liste des demandes d'absences.
+Cette section se présente sous forme de tableau, affichant l'ensemble des demandes d'absence créées par l'employé ou par l'initiateur de la demande. Le tableau permet de visualiser rapidement les informations clés associées à chaque demande.
+Colonnes affichées :
+1.	Date d'absence : Cette colonne indique la période d'absence prévue pour l'employé, incluant la date de début et la date de fin. Elle reflète la durée pendant laquelle l'employé est censé être absent, que ce soit pour une journée complète ou une plage horaire précise.
+ - Exemple avec heures spécifiées : Du jeudi 6 novembre 2026 à 12 h 00 au samedi 8 novembre 2026 à 14 h 30.
+ - Exemple sans heures spécifiées :
+Du jeudi 6 novembre 2026 au samedi 8 novembre 2026 sera interprété comme : Du jeudi 6 novembre 2026 à 00 h 00 au samedi 8 novembre 2026 à 00 h 00.
+Les heures sont facultatives. Si elles ne sont pas renseignées, le système considère par défaut le début de la journée (00 h 00) pour chaque date.
+
+
+2.	Initiée par : Cette colonne indique l'utilisateur qui a créé la demande d'absence. Il s'agit généralement de l'employé concerné, mais il est également possible qu'un autre utilisateur - tel qu'une secrétaire, un superviseur ou un directeur - initie la demande pour le compte d'un collègue.
+3.	Initiée le : Cette colonne indique la date et l'heure exactes de création de la demande d'absence. Cette information est essentielle pour assurer la traçabilité des actions et répondre aux exigences d'audit.
+4.	Emploi : Cette colonne affiche la valeur sélectionnée dans le champ "Emploi" du formulaire de demande d'absence (formulaire « abcd »). Elle permet d'identifier la fonction ou le poste occupé par l'employé.
+5.	Lieu de travail : Cette colonne affiche la valeur saisie dans le champ "Lieu de travail" lors de la création/modification de la demande d'absence (formulaire « Formulaire de demande d'absence »). Elle permet d'identifier l'établissement, le centre ou l'unité administrative où l'employé est affecté.
+6.	Motif : Cette colonne affiche le motif d'absence tel qu'il a été sélectionné dans le formulaire de demande de demande d'absence (formulaire « Formulaire de demande d'absence »). Elle permet d'identifier la raison pour laquelle l'employé a formulé sa demande, en se basant sur les options disponibles dans la liste déroulante du champ "Motif".
+
+7.	État : Cette colonne indique le statut actuel de la demande d'absence. Chaque état détermine les actions possibles pour l'employé. Les états disponibles sont :
+ 7.1 Brouillon : La demande d'absence a été initiée et enregistrée, mais elle n'a pas encore été soumise pour approbation. Voici les actions possibles pour l'employé concerné :
+    o Supprimer sa demande : L'employé peut choisir de supprimer sa demande d'absence qui à l'état « Brouillon ». Une fois supprimée, la demande passe automatiquement à l'état « Annulée ».
+    o Modifier sa demande : L'employé peut choisir de modifier une demande d'absence à l'état Brouillon. Cette action ouvre la fenêtre « Formulaire de demande d'absence », permettant à l'employé d'ajuster les informations saisies avant de soumettre la demande. Les fonctionnalités détaillées du formulaire de demande d'absence seront présentées dans le récit 2.
+    o Soumettre sa demande : L'employé peut choisir de soumettre une demande d'absence à l'état « Brouillon ». Cette action envoie la demande pour approbation et change son état en « Soumise ».
+ 7.2 Soumise : La demande d'absence a été envoyée pour approbation par l'employé ou par un autre initiateur autorisé (ex. : secrétaire, superviseur, directeur). Elle est désormais en attente d'une décision de l'approbateur. À ce stade, l'employé peut uniquement consulter les détails de sa demande, mais ne peut ni la modifier ni la supprimer.
+ 7.3 En attente d'approbation : Dans ce cas, l'employé ne peut pas modifier sa demande d'absence. Cependant, il peut l'annuler en cliquant sur le bouton "Supprimer" ce qui change son état à "Annulée".
+ 7.4 Modifiée : L'état Modifiée indique qu'une demande d'absence a été modifiée après sa création initiale, mais n'a pas encore été soumise pour approbation. L'employé peut effectuer trois actions : 
+   o La supprimer (ce qui la fait passer à l'état « Annulée »).
+   o La modifier à nouveau via le Formulaire de demande d'absence pour ajuster les informations saisies.
+   o La soumettre pour approbation (ce qui la fait passer à l'état Soumise).
+ 7.5 Traitée : L'état Traitée signifie que la demande d'absence a été entièrement prise en charge et finalisée par le processus d'approbation. À ce stade, l'employé ne peut que consulter les détails de la demande; toute modification ou suppression est désactivée. La demande est donc en lecture seule.
+ 7.6 En attente d'une pièce justificative : L'état En attente d'une pièce justificative signifie que la demande d'absence a été retournée par l'approbateur (superviseur, secrétaire ou directeur) en raison de pièces jointes manquantes. L'employé peut alors effectuer deux actions : 
+   o Ouvrir le Formulaire de demande d'absence pour modifier la demande et y ajouter les documents requis, puis la soumettre à nouveau (immédiatement ou plus tard), 
+   o Supprimer la demande, ce qui la fera passer à l'état Annulée.
+ 7.7 Annulée : L'état Annulée indique que la demande d'absence a été supprimée par l'employé. Une fois dans cet état, la demande ne peut plus être modifiée ni soumise; elle reste accessible uniquement en consultation, en mode lecture seule.
+ 7.8 Refusée : L'état Refusée signifie que la demande d'absence a été traitée par l'approbateur. Une fois dans cet état, l'employé ne peut qu'en consulter les détails en mode lecture seule.
+ 7.9 Note : Cette colonne affiche le contenu du champ « Note » tel que saisi par l'employé ou l'initiateur de la demande dans le Formulaire de demande d'absence. Elle permet d'ajouter des précisions, commentaires ou informations complémentaires liés à la demande.
+
+
+8.	Actions : Cette colonne regroupe les actions disponibles pour chaque demande d'absence, présentées sous forme d'icônes. Leur disponibilité dépend de l'état de la demande :
+ - (Voir détails) : Permet de consulter les informations complètes de la demande. Cette action est inactive lorsque la demande est à l'état « Brouillon », « Modifiée » ou « En attente d'une pièce justificative ».
+ - (Modifier) : Permet à l'employé d'ouvrir le Formulaire de demande d'absence pour ajuster les informations avant soumission. Active uniquement si la demande est à l'état « Brouillon », « Modifiée » ou « En attente d'une pièce justificative ».
+ - (Supprimer) : Permet à l'employé d'annuler la demande. Active uniquement si la demande est à l'état « Brouillon », « Modifiée » ou « En attente d'une pièce justificative ».
+
+Le tableau listant les demandes d'absence peut être trié par l'employé selon les colonnes suivantes :
+ - Date d'absence : permet d'organiser les demandes par ordre chronologique.
+ - Initiée le : trie les demandes selon leur date de création.
+ - Emploi : trie les demandes selon le poste occupé.
+ - Lieu de travail : trie les demandes par site ou établissement.
+ - Motif : trie les demandes selon la raison de l'absence.
+ - État : trie les demandes selon leur statut (ex. : Brouillon, Soumise, Traitée, etc.).
+
+
+Section 3 : Filtre des demandes d'absences.
+La zone de filtre permet à l'employé de restreindre l'affichage de sa liste de demandes d'absences en fonction de critères spécifiques. Les champs disponibles pour le filtrage sont :
+ - Champs « De » et « À » : Ces champs permettent à l'employé de filtrer les demandes d'absence en fonction d'une période donnée. Le système affiche uniquement les demandes dont la période d'absence chevauche, en tout ou en partie, l'intervalle défini entre la date de début (De) et la date de fin (À).
+Exemple : Si une demande couvre la période du 3 au 7 novembre 2026, et que le filtre est configuré du 27 octobre au 3 novembre 2026, cette demande apparaîtra dans la liste car elle inclut le 3 novembre, qui correspond à la date de fin du filtre.
+ - État : Le champ "État" permet d'indiquer le statut d'une demande d'absence. Il s'agit d'une liste déroulante à sélection multiple, contenant les options suivantes : Tous, Brouillon, Soumise, En attente d'approbation, Modifiée, Traitée, En attente d'une pièce justificative, Annulée et Refusée.
+Remarque 1 : L'option "Tous" est sélectionnée par défaut.
+Remarque 2 : L'utilisateur peut choisir plusieurs états simultanément grâce à la sélection multiple.
+ - Motif : Le champ "Motif" permet de sélectionner la raison de l'absence. Il s'agit d'une liste déroulante à sélection multiple, contenant les options suivantes :
+   o "Tous"
+   o "1150 - Dir. d'école primaire"
+   o "1240 - Dir.adj.centre form.prof."
+   o "1250 - Dir.adj.d'école primaire"
+   o "1255 - Dir.ad.d'école secondaire"
+   o "1520 - Régisseur de services"
+   o "2104 - Conseiller pédagogique"
+   o "2106 - Agent(e) réadaptation"
+   o "2109 - Cons. d'orientation"
+   o "2113 - Psychologue"
+   o "2111 - Travailleur social"
+   o "3201 - Suppléant"
+   o "3103 - Primaire"
+   o "3101 - Adapt. scol."
+   o "3113 - Form gén math/sc sec"
+   o "4284 - Éduc. en milieu scolaire"
+   o "4298 - Autre soutien technique"
+   o "4207 - Techn. en éduc. spéc."
+   o "4223 - Surveillant d'élèves"
+   o "4116 - Secrétaire école / centre"
+   o "5302 - Concierge, classe II"
+   o "5318 - Ouvrier d'ent., classe II"
+   o "5398 - Autre soutien entr. serv."
+   o "5304 - Concierge de nuit, cl. II"
+   o "5301 - Concierge, classe I"
+Remarque 1 : L'option Tous est sélectionnée par défaut.
+Remarque 2 : Ce champ permet la sélection de plusieurs motifs simultanément. L'utilisateur peut donc cocher plusieurs options à la fois.
+ - Le bouton "Filtrer" (action) : Le bouton "Filtrer" permet à l'employé d'appliquer les critères sélectionnés dans les champs de recherche afin d'afficher uniquement les demandes d'absence correspondant aux conditions définies.
