@@ -1,0 +1,649 @@
+// NOTE: Certaines choses ne sont pas modifiables via le theme ou les SASS variables (voir vuetify.scss). On doit
+//       donc manuellement changer les propriétés.
+@use 'theme/v-btn';
+@use 'theme/v-infinite-scroll';
+@use 'theme/v-list';
+@use 'theme/v-ripple';
+@use 'theme/v-tabs';
+@use 'theme/v-menu';
+
+// NOTE: Copie du thème généré par vuetify, à la différence que `:root` est remplacé par `:host`.
+//      `:root` pointe le document alors que `:host` pointe le shadowRoot parent.
+:host {
+   color-scheme: normal;
+   --v-theme-background: 255, 255, 255;
+   --v-theme-background-overlay-multiplier: 1;
+   --v-theme-surface: 255, 255, 255;
+   --v-theme-surface-overlay-multiplier: 1;
+   --v-theme-surface-bright: 255, 255, 255;
+   --v-theme-surface-bright-overlay-multiplier: 1;
+   --v-theme-surface-light: 238, 238, 238;
+   --v-theme-surface-light-overlay-multiplier: 1;
+   --v-theme-surface-variant: 66, 66, 66;
+   --v-theme-surface-variant-overlay-multiplier: 2;
+   --v-theme-on-surface-variant: 238, 238, 238;
+   --v-theme-overlay-multiplier: 1;
+   --v-theme-primary: 24, 103, 192;
+   --v-theme-primary-overlay-multiplier: 2;
+   --v-theme-primary-darken-1: 31, 85, 146;
+   --v-theme-primary-darken-1-overlay-multiplier: 2;
+   --v-theme-secondary: 72, 169, 166;
+   --v-theme-secondary-overlay-multiplier: 1;
+   --v-theme-secondary-darken-1: 1, 135, 134;
+   --v-theme-secondary-darken-1-overlay-multiplier: 1;
+   --v-theme-error: 176, 0, 32;
+   --v-theme-error-overlay-multiplier: 2;
+   --v-theme-info: 33, 150, 243;
+   --v-theme-info-overlay-multiplier: 1;
+   --v-theme-success: 76, 175, 80;
+   --v-theme-success-overlay-multiplier: 1;
+   --v-theme-warning: 251, 140, 0;
+   --v-theme-warning-overlay-multiplier: 1;
+   --v-theme-blanc: 255, 255, 255;
+   --v-theme-blanc-overlay-multiplier: 1;
+   --v-theme-bleu: 20, 114, 191;
+   --v-theme-bleu-overlay-multiplier: 2;
+   --v-theme-bleu-clair: 74, 152, 217;
+   --v-theme-bleu-clair-overlay-multiplier: 1;
+   --v-theme-bleu-fonce: 34, 54, 84;
+   --v-theme-bleu-fonce-overlay-multiplier: 2;
+   --v-theme-bleu-moyen: 25, 64, 108;
+   --v-theme-bleu-moyen-overlay-multiplier: 2;
+   --v-theme-bleu-pale: 218, 230, 240;
+   --v-theme-bleu-pale-overlay-multiplier: 1;
+   --v-theme-bleu-piv: 9, 87, 151;
+   --v-theme-bleu-piv-overlay-multiplier: 2;
+   --v-theme-gris: 136, 147, 162;
+   --v-theme-gris-overlay-multiplier: 1;
+   --v-theme-gris-clair: 197, 202, 210;
+   --v-theme-gris-clair-overlay-multiplier: 1;
+   --v-theme-gris-fonce: 78, 86, 98;
+   --v-theme-gris-fonce-overlay-multiplier: 2;
+   --v-theme-gris-moyen: 107, 119, 138;
+   --v-theme-gris-moyen-overlay-multiplier: 1;
+   --v-theme-gris-pale: 241, 241, 242;
+   --v-theme-gris-pale-overlay-multiplier: 1;
+   --v-theme-jaune: 224, 173, 3;
+   --v-theme-jaune-overlay-multiplier: 1;
+   --v-theme-jaune-fonce: 173, 120, 28;
+   --v-theme-jaune-fonce-overlay-multiplier: 1;
+   --v-theme-jaune-pale: 248, 230, 154;
+   --v-theme-jaune-pale-overlay-multiplier: 1;
+   --v-theme-noir: 30, 30, 30;
+   --v-theme-noir-overlay-multiplier: 2;
+   --v-theme-rose: 229, 130, 113;
+   --v-theme-rose-overlay-multiplier: 1;
+   --v-theme-rose-pale: 255, 219, 214;
+   --v-theme-rose-pale-overlay-multiplier: 1;
+   --v-theme-rouge: 203, 56, 31;
+   --v-theme-rouge-overlay-multiplier: 2;
+   --v-theme-rouge-fonce: 105, 37, 25;
+   --v-theme-rouge-fonce-overlay-multiplier: 2;
+   --v-theme-vert: 79, 129, 61;
+   --v-theme-vert-overlay-multiplier: 2;
+   --v-theme-vert-fonce: 44, 64, 36;
+   --v-theme-vert-fonce-overlay-multiplier: 2;
+   --v-theme-vert-pale: 215, 240, 187;
+   --v-theme-vert-pale-overlay-multiplier: 1;
+   --v-theme-on-background: 0, 0, 0;
+   --v-theme-on-surface: 0, 0, 0;
+   --v-theme-on-surface-bright: 0, 0, 0;
+   --v-theme-on-surface-light: 0, 0, 0;
+   --v-theme-on-primary: 255, 255, 255;
+   --v-theme-on-primary-darken-1: 255, 255, 255;
+   --v-theme-on-secondary: 255, 255, 255;
+   --v-theme-on-secondary-darken-1: 255, 255, 255;
+   --v-theme-on-error: 255, 255, 255;
+   --v-theme-on-info: 255, 255, 255;
+   --v-theme-on-success: 255, 255, 255;
+   --v-theme-on-warning: 255, 255, 255;
+   --v-theme-on-blanc: 0, 0, 0;
+   --v-theme-on-bleu: 255, 255, 255;
+   --v-theme-on-bleu-clair: 255, 255, 255;
+   --v-theme-on-bleu-fonce: 255, 255, 255;
+   --v-theme-on-bleu-moyen: 255, 255, 255;
+   --v-theme-on-bleu-pale: 0, 0, 0;
+   --v-theme-on-bleu-piv: 255, 255, 255;
+   --v-theme-on-gris: 255, 255, 255;
+   --v-theme-on-gris-clair: 0, 0, 0;
+   --v-theme-on-gris-fonce: 255, 255, 255;
+   --v-theme-on-gris-moyen: 255, 255, 255;
+   --v-theme-on-gris-pale: 0, 0, 0;
+   --v-theme-on-jaune: 0, 0, 0;
+   --v-theme-on-jaune-fonce: 255, 255, 255;
+   --v-theme-on-jaune-pale: 0, 0, 0;
+   --v-theme-on-noir: 255, 255, 255;
+   --v-theme-on-rose: 255, 255, 255;
+   --v-theme-on-rose-pale: 0, 0, 0;
+   --v-theme-on-rouge: 255, 255, 255;
+   --v-theme-on-rouge-fonce: 255, 255, 255;
+   --v-theme-on-vert: 255, 255, 255;
+   --v-theme-on-vert-fonce: 255, 255, 255;
+   --v-theme-on-vert-pale: 0, 0, 0;
+   --v-border-color: 197, 202, 210;
+   --v-border-opacity: 1;
+   --v-high-emphasis-opacity: 0.87;
+   --v-medium-emphasis-opacity: 0.6;
+   --v-disabled-opacity: 0.38;
+   --v-idle-opacity: 0.04;
+   --v-hover-opacity: 0.04;
+   --v-focus-opacity: 0.12;
+   --v-selected-opacity: 0.08;
+   --v-activated-opacity: 0;
+   --v-pressed-opacity: 0.12;
+   --v-dragged-opacity: 0.08;
+   --v-theme-kbd: 33, 37, 41;
+   --v-theme-on-kbd: 255, 255, 255;
+   --v-theme-code: 245, 245, 245;
+   --v-theme-on-code: 0, 0, 0;
+   --v-border-color-focus: 74, 152, 217;
+   --v-link-color: 20, 114, 191;
+   --v-link-color-visited: 107, 79, 161;
+   --v-link-color-active: 203, 56, 31;
+   --v-overlay-color: 34, 54, 84;
+   --v-overlay-opacity: 0.4;
+}
+.bg-background {
+   --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+   background-color: rgb(var(--v-theme-background)) !important;
+   color: rgb(var(--v-theme-on-background)) !important;
+}
+.bg-surface {
+   --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+   background-color: rgb(var(--v-theme-surface)) !important;
+   color: rgb(var(--v-theme-on-surface)) !important;
+}
+.bg-surface-bright {
+   --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+   background-color: rgb(var(--v-theme-surface-bright)) !important;
+   color: rgb(var(--v-theme-on-surface-bright)) !important;
+}
+.bg-surface-light {
+   --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+   background-color: rgb(var(--v-theme-surface-light)) !important;
+   color: rgb(var(--v-theme-on-surface-light)) !important;
+}
+.bg-surface-variant {
+   --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+   background-color: rgb(var(--v-theme-surface-variant)) !important;
+   color: rgb(var(--v-theme-on-surface-variant)) !important;
+}
+.bg-primary {
+   --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+   background-color: rgb(var(--v-theme-primary)) !important;
+   color: rgb(var(--v-theme-on-primary)) !important;
+}
+.bg-primary-darken-1 {
+   --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+   background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+   color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+}
+.bg-secondary {
+   --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+   background-color: rgb(var(--v-theme-secondary)) !important;
+   color: rgb(var(--v-theme-on-secondary)) !important;
+}
+.bg-secondary-darken-1 {
+   --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+   background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+   color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+}
+.bg-error {
+   --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+   background-color: rgb(var(--v-theme-error)) !important;
+   color: rgb(var(--v-theme-on-error)) !important;
+}
+.bg-info {
+   --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+   background-color: rgb(var(--v-theme-info)) !important;
+   color: rgb(var(--v-theme-on-info)) !important;
+}
+.bg-success {
+   --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+   background-color: rgb(var(--v-theme-success)) !important;
+   color: rgb(var(--v-theme-on-success)) !important;
+}
+.bg-warning {
+   --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+   background-color: rgb(var(--v-theme-warning)) !important;
+   color: rgb(var(--v-theme-on-warning)) !important;
+}
+.bg-blanc {
+   --v-theme-overlay-multiplier: var(--v-theme-blanc-overlay-multiplier);
+   background-color: rgb(var(--v-theme-blanc)) !important;
+   color: rgb(var(--v-theme-on-blanc)) !important;
+}
+.bg-bleu {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu)) !important;
+   color: rgb(var(--v-theme-on-bleu)) !important;
+}
+.bg-bleu-clair {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-clair-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu-clair)) !important;
+   color: rgb(var(--v-theme-on-bleu-clair)) !important;
+}
+.bg-bleu-fonce {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-fonce-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu-fonce)) !important;
+   color: rgb(var(--v-theme-on-bleu-fonce)) !important;
+}
+.bg-bleu-moyen {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-moyen-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu-moyen)) !important;
+   color: rgb(var(--v-theme-on-bleu-moyen)) !important;
+}
+.bg-bleu-pale {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-pale-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu-pale)) !important;
+   color: rgb(var(--v-theme-on-bleu-pale)) !important;
+}
+.bg-bleu-piv {
+   --v-theme-overlay-multiplier: var(--v-theme-bleu-piv-overlay-multiplier);
+   background-color: rgb(var(--v-theme-bleu-piv)) !important;
+   color: rgb(var(--v-theme-on-bleu-piv)) !important;
+}
+.bg-gris {
+   --v-theme-overlay-multiplier: var(--v-theme-gris-overlay-multiplier);
+   background-color: rgb(var(--v-theme-gris)) !important;
+   color: rgb(var(--v-theme-on-gris)) !important;
+}
+.bg-gris-clair {
+   --v-theme-overlay-multiplier: var(--v-theme-gris-clair-overlay-multiplier);
+   background-color: rgb(var(--v-theme-gris-clair)) !important;
+   color: rgb(var(--v-theme-on-gris-clair)) !important;
+}
+.bg-gris-fonce {
+   --v-theme-overlay-multiplier: var(--v-theme-gris-fonce-overlay-multiplier);
+   background-color: rgb(var(--v-theme-gris-fonce)) !important;
+   color: rgb(var(--v-theme-on-gris-fonce)) !important;
+}
+.bg-gris-moyen {
+   --v-theme-overlay-multiplier: var(--v-theme-gris-moyen-overlay-multiplier);
+   background-color: rgb(var(--v-theme-gris-moyen)) !important;
+   color: rgb(var(--v-theme-on-gris-moyen)) !important;
+}
+.bg-gris-pale {
+   --v-theme-overlay-multiplier: var(--v-theme-gris-pale-overlay-multiplier);
+   background-color: rgb(var(--v-theme-gris-pale)) !important;
+   color: rgb(var(--v-theme-on-gris-pale)) !important;
+}
+.bg-jaune {
+   --v-theme-overlay-multiplier: var(--v-theme-jaune-overlay-multiplier);
+   background-color: rgb(var(--v-theme-jaune)) !important;
+   color: rgb(var(--v-theme-on-jaune)) !important;
+}
+.bg-jaune-fonce {
+   --v-theme-overlay-multiplier: var(--v-theme-jaune-fonce-overlay-multiplier);
+   background-color: rgb(var(--v-theme-jaune-fonce)) !important;
+   color: rgb(var(--v-theme-on-jaune-fonce)) !important;
+}
+.bg-jaune-pale {
+   --v-theme-overlay-multiplier: var(--v-theme-jaune-pale-overlay-multiplier);
+   background-color: rgb(var(--v-theme-jaune-pale)) !important;
+   color: rgb(var(--v-theme-on-jaune-pale)) !important;
+}
+.bg-noir {
+   --v-theme-overlay-multiplier: var(--v-theme-noir-overlay-multiplier);
+   background-color: rgb(var(--v-theme-noir)) !important;
+   color: rgb(var(--v-theme-on-noir)) !important;
+}
+.bg-rose {
+   --v-theme-overlay-multiplier: var(--v-theme-rose-overlay-multiplier);
+   background-color: rgb(var(--v-theme-rose)) !important;
+   color: rgb(var(--v-theme-on-rose)) !important;
+}
+.bg-rose-pale {
+   --v-theme-overlay-multiplier: var(--v-theme-rose-pale-overlay-multiplier);
+   background-color: rgb(var(--v-theme-rose-pale)) !important;
+   color: rgb(var(--v-theme-on-rose-pale)) !important;
+}
+.bg-rouge {
+   --v-theme-overlay-multiplier: var(--v-theme-rouge-overlay-multiplier);
+   background-color: rgb(var(--v-theme-rouge)) !important;
+   color: rgb(var(--v-theme-on-rouge)) !important;
+}
+.bg-rouge-fonce {
+   --v-theme-overlay-multiplier: var(--v-theme-rouge-fonce-overlay-multiplier);
+   background-color: rgb(var(--v-theme-rouge-fonce)) !important;
+   color: rgb(var(--v-theme-on-rouge-fonce)) !important;
+}
+.bg-vert {
+   --v-theme-overlay-multiplier: var(--v-theme-vert-overlay-multiplier);
+   background-color: rgb(var(--v-theme-vert)) !important;
+   color: rgb(var(--v-theme-on-vert)) !important;
+}
+.bg-vert-fonce {
+   --v-theme-overlay-multiplier: var(--v-theme-vert-fonce-overlay-multiplier);
+   background-color: rgb(var(--v-theme-vert-fonce)) !important;
+   color: rgb(var(--v-theme-on-vert-fonce)) !important;
+}
+.bg-vert-pale {
+   --v-theme-overlay-multiplier: var(--v-theme-vert-pale-overlay-multiplier);
+   background-color: rgb(var(--v-theme-vert-pale)) !important;
+   color: rgb(var(--v-theme-on-vert-pale)) !important;
+}
+.text-background {
+   color: rgb(var(--v-theme-background)) !important;
+}
+.border-background {
+   --v-border-color: var(--v-theme-background);
+}
+.text-surface {
+   color: rgb(var(--v-theme-surface)) !important;
+}
+.border-surface {
+   --v-border-color: var(--v-theme-surface);
+}
+.text-surface-bright {
+   color: rgb(var(--v-theme-surface-bright)) !important;
+}
+.border-surface-bright {
+   --v-border-color: var(--v-theme-surface-bright);
+}
+.text-surface-light {
+   color: rgb(var(--v-theme-surface-light)) !important;
+}
+.border-surface-light {
+   --v-border-color: var(--v-theme-surface-light);
+}
+.text-surface-variant {
+   color: rgb(var(--v-theme-surface-variant)) !important;
+}
+.border-surface-variant {
+   --v-border-color: var(--v-theme-surface-variant);
+}
+.on-surface-variant {
+   color: rgb(var(--v-theme-on-surface-variant)) !important;
+}
+.text-primary {
+   color: rgb(var(--v-theme-primary)) !important;
+}
+.border-primary {
+   --v-border-color: var(--v-theme-primary);
+}
+.text-primary-darken-1 {
+   color: rgb(var(--v-theme-primary-darken-1)) !important;
+}
+.border-primary-darken-1 {
+   --v-border-color: var(--v-theme-primary-darken-1);
+}
+.text-secondary {
+   color: rgb(var(--v-theme-secondary)) !important;
+}
+.border-secondary {
+   --v-border-color: var(--v-theme-secondary);
+}
+.text-secondary-darken-1 {
+   color: rgb(var(--v-theme-secondary-darken-1)) !important;
+}
+.border-secondary-darken-1 {
+   --v-border-color: var(--v-theme-secondary-darken-1);
+}
+.text-error {
+   color: rgb(var(--v-theme-error)) !important;
+}
+.border-error {
+   --v-border-color: var(--v-theme-error);
+}
+.text-info {
+   color: rgb(var(--v-theme-info)) !important;
+}
+.border-info {
+   --v-border-color: var(--v-theme-info);
+}
+.text-success {
+   color: rgb(var(--v-theme-success)) !important;
+}
+.border-success {
+   --v-border-color: var(--v-theme-success);
+}
+.text-warning {
+   color: rgb(var(--v-theme-warning)) !important;
+}
+.border-warning {
+   --v-border-color: var(--v-theme-warning);
+}
+.on-background {
+   color: rgb(var(--v-theme-on-background)) !important;
+}
+.on-surface {
+   color: rgb(var(--v-theme-on-surface)) !important;
+}
+.on-surface-bright {
+   color: rgb(var(--v-theme-on-surface-bright)) !important;
+}
+.on-surface-light {
+   color: rgb(var(--v-theme-on-surface-light)) !important;
+}
+.on-primary {
+   color: rgb(var(--v-theme-on-primary)) !important;
+}
+.on-primary-darken-1 {
+   color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+}
+.on-secondary {
+   color: rgb(var(--v-theme-on-secondary)) !important;
+}
+.on-secondary-darken-1 {
+   color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+}
+.on-error {
+   color: rgb(var(--v-theme-on-error)) !important;
+}
+.on-info {
+   color: rgb(var(--v-theme-on-info)) !important;
+}
+.on-success {
+   color: rgb(var(--v-theme-on-success)) !important;
+}
+.on-warning {
+   color: rgb(var(--v-theme-on-warning)) !important;
+}
+.text-blanc {
+   color: rgb(var(--v-theme-blanc)) !important;
+}
+.border-blanc {
+   --v-border-color: var(--v-theme-blanc);
+}
+.text-bleu {
+   color: rgb(var(--v-theme-bleu)) !important;
+}
+.border-bleu {
+   --v-border-color: var(--v-theme-bleu);
+}
+.text-bleu-clair {
+   color: rgb(var(--v-theme-bleu-clair)) !important;
+}
+.border-bleu-clair {
+   --v-border-color: var(--v-theme-bleu-clair);
+}
+.text-bleu-fonce {
+   color: rgb(var(--v-theme-bleu-fonce)) !important;
+}
+.border-bleu-fonce {
+   --v-border-color: var(--v-theme-bleu-fonce);
+}
+.text-bleu-moyen {
+   color: rgb(var(--v-theme-bleu-moyen)) !important;
+}
+.border-bleu-moyen {
+   --v-border-color: var(--v-theme-bleu-moyen);
+}
+.text-bleu-pale {
+   color: rgb(var(--v-theme-bleu-pale)) !important;
+}
+.border-bleu-pale {
+   --v-border-color: var(--v-theme-bleu-pale);
+}
+.text-bleu-piv {
+   color: rgb(var(--v-theme-bleu-piv)) !important;
+}
+.border-bleu-piv {
+   --v-border-color: var(--v-theme-bleu-piv);
+}
+.text-gris {
+   color: rgb(var(--v-theme-gris)) !important;
+}
+.border-gris {
+   --v-border-color: var(--v-theme-gris);
+}
+.text-gris-clair {
+   color: rgb(var(--v-theme-gris-clair)) !important;
+}
+.border-gris-clair {
+   --v-border-color: var(--v-theme-gris-clair);
+}
+.text-gris-fonce {
+   color: rgb(var(--v-theme-gris-fonce)) !important;
+}
+.border-gris-fonce {
+   --v-border-color: var(--v-theme-gris-fonce);
+}
+.text-gris-moyen {
+   color: rgb(var(--v-theme-gris-moyen)) !important;
+}
+.border-gris-moyen {
+   --v-border-color: var(--v-theme-gris-moyen);
+}
+.text-gris-pale {
+   color: rgb(var(--v-theme-gris-pale)) !important;
+}
+.border-gris-pale {
+   --v-border-color: var(--v-theme-gris-pale);
+}
+.text-jaune {
+   color: rgb(var(--v-theme-jaune)) !important;
+}
+.border-jaune {
+   --v-border-color: var(--v-theme-jaune);
+}
+.text-jaune-fonce {
+   color: rgb(var(--v-theme-jaune-fonce)) !important;
+}
+.border-jaune-fonce {
+   --v-border-color: var(--v-theme-jaune-fonce);
+}
+.text-jaune-pale {
+   color: rgb(var(--v-theme-jaune-pale)) !important;
+}
+.border-jaune-pale {
+   --v-border-color: var(--v-theme-jaune-pale);
+}
+.text-noir {
+   color: rgb(var(--v-theme-noir)) !important;
+}
+.border-noir {
+   --v-border-color: var(--v-theme-noir);
+}
+.text-rose {
+   color: rgb(var(--v-theme-rose)) !important;
+}
+.border-rose {
+   --v-border-color: var(--v-theme-rose);
+}
+.text-rose-pale {
+   color: rgb(var(--v-theme-rose-pale)) !important;
+}
+.border-rose-pale {
+   --v-border-color: var(--v-theme-rose-pale);
+}
+.text-rouge {
+   color: rgb(var(--v-theme-rouge)) !important;
+}
+.border-rouge {
+   --v-border-color: var(--v-theme-rouge);
+}
+.text-rouge-fonce {
+   color: rgb(var(--v-theme-rouge-fonce)) !important;
+}
+.border-rouge-fonce {
+   --v-border-color: var(--v-theme-rouge-fonce);
+}
+.text-vert {
+   color: rgb(var(--v-theme-vert)) !important;
+}
+.border-vert {
+   --v-border-color: var(--v-theme-vert);
+}
+.text-vert-fonce {
+   color: rgb(var(--v-theme-vert-fonce)) !important;
+}
+.border-vert-fonce {
+   --v-border-color: var(--v-theme-vert-fonce);
+}
+.text-vert-pale {
+   color: rgb(var(--v-theme-vert-pale)) !important;
+}
+.border-vert-pale {
+   --v-border-color: var(--v-theme-vert-pale);
+}
+.on-blanc {
+   color: rgb(var(--v-theme-on-blanc)) !important;
+}
+.on-bleu {
+   color: rgb(var(--v-theme-on-bleu)) !important;
+}
+.on-bleu-clair {
+   color: rgb(var(--v-theme-on-bleu-clair)) !important;
+}
+.on-bleu-fonce {
+   color: rgb(var(--v-theme-on-bleu-fonce)) !important;
+}
+.on-bleu-moyen {
+   color: rgb(var(--v-theme-on-bleu-moyen)) !important;
+}
+.on-bleu-pale {
+   color: rgb(var(--v-theme-on-bleu-pale)) !important;
+}
+.on-bleu-piv {
+   color: rgb(var(--v-theme-on-bleu-piv)) !important;
+}
+.on-gris {
+   color: rgb(var(--v-theme-on-gris)) !important;
+}
+.on-gris-clair {
+   color: rgb(var(--v-theme-on-gris-clair)) !important;
+}
+.on-gris-fonce {
+   color: rgb(var(--v-theme-on-gris-fonce)) !important;
+}
+.on-gris-moyen {
+   color: rgb(var(--v-theme-on-gris-moyen)) !important;
+}
+.on-gris-pale {
+   color: rgb(var(--v-theme-on-gris-pale)) !important;
+}
+.on-jaune {
+   color: rgb(var(--v-theme-on-jaune)) !important;
+}
+.on-jaune-fonce {
+   color: rgb(var(--v-theme-on-jaune-fonce)) !important;
+}
+.on-jaune-pale {
+   color: rgb(var(--v-theme-on-jaune-pale)) !important;
+}
+.on-noir {
+   color: rgb(var(--v-theme-on-noir)) !important;
+}
+.on-rose {
+   color: rgb(var(--v-theme-on-rose)) !important;
+}
+.on-rose-pale {
+   color: rgb(var(--v-theme-on-rose-pale)) !important;
+}
+.on-rouge {
+   color: rgb(var(--v-theme-on-rouge)) !important;
+}
+.on-rouge-fonce {
+   color: rgb(var(--v-theme-on-rouge-fonce)) !important;
+}
+.on-vert {
+   color: rgb(var(--v-theme-on-vert)) !important;
+}
+.on-vert-fonce {
+   color: rgb(var(--v-theme-on-vert-fonce)) !important;
+}
+.on-vert-pale {
+   color: rgb(var(--v-theme-on-vert-pale)) !important;
+}

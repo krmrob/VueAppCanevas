@@ -1,0 +1,115 @@
+// NOTE: Ne rien ajouter de plus que le @use() ici. Les règles hors @use se retrouveront dupliquées
+//       dans TOUS les fichiers SASS de Vuetify.
+@use 'vuetify/settings' with (
+   $color-pack: false,
+   $typography: (
+      'paragraph-small': (
+         'size': 14px,
+         'font-family': var(--primary-font-family),
+         'weight': normal,
+         'text-transform': none,
+         'letter-spacing': 0,
+         'line-height': 1.2,
+      ),
+      'paragraph': (
+         'size': 16px,
+         'font-family': var(--primary-font-family),
+         'weight': normal,
+         'line-height': 1.5,
+         'text-transform': none,
+         'letter-spacing': 0,
+      ),
+      'paragraph-large': (
+         'size': 18px,
+         'font-family': var(--primary-font-family),
+         'weight': normal,
+         'line-height': 1.5,
+         'text-transform': none,
+         'letter-spacing': 0,
+      ),
+      'button': (
+         'size': 16px,
+         'weight': bold,
+         'text-transform': none,
+         'letter-spacing': 0,
+      ),
+      'size-3': (
+         'size': 12px,
+         'font-family': var(--primary-font-family),
+         'weight': normal,
+         'text-transform': none,
+         'line-height': 1,
+         'letter-spacing': 0,
+      ),
+      'h1': (
+         'font-family': var(--secondary-font-family),
+         'size': 36px,
+         'line-height': 1.3,
+         'weight': bold,
+      ),
+      'h3': (
+         'font-family': var(--secondary-font-family),
+         'size': 28px,
+         'line-height': 32px,
+         'weight': bold,
+      ),
+      'h4': (
+         'font-family': var(--secondary-font-family),
+         'size': 21px,
+         'line-height': 24px,
+         'weight': bold,
+      ),
+      'h5': (
+         'font-family': var(--secondary-font-family),
+         'size': 19px,
+         'line-height': 24px,
+         'weight': bold,
+      ),
+      'h6': (
+         'font-family': var(--secondary-font-family),
+         'size': 16px,
+         'line-height': 20px,
+         'weight': bold,
+      ),
+   ),
+
+   // v-badge
+   $badge-min-width: 9px,
+   $badge-height: 9px,
+   $badge-padding: 0,
+
+   // v-btn
+   $button-height: 56px,
+   $button-border-radius: 4px,
+   $button-content-transition: all 0.24s ease-in-out,
+   $button-transition-property: all,
+   $button-density: (
+      'default': 0,
+      'comfortable': -2,
+      'compact': -4,
+   ),
+
+   // v-chip
+   $chip-font-size: 14px,
+   $chip-font-weight: 600,
+   $chip-height: 24px,
+
+   // v-text-field
+   $text-field-details-padding-inline: 0,
+   $text-field-affix-color: transparent,
+
+   // v-overlay
+   $dialog-margin: 0px,
+
+   // v-skeleton-loader
+   $skeleton-loader-text-background: rgba(var(--v-theme-gris-clair), var(--v-border-opacity)),
+   // v-tabs
+   $tab-min-width: 0px,
+   $tabs-height: auto,
+
+   // v-window
+   $window-transition: none !important,
+
+   // v-infinite-scroll
+   $infinite-scroll-side-padding: 0
+);
